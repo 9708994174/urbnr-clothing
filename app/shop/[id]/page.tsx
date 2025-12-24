@@ -234,13 +234,8 @@ export default function ProductDetailPage() {
   return (
     <div className="min-h-screen bg-background w-full overflow-x-hidden">
       <ShopHeader />
-<<<<<<< HEAD
       <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
       <div className="w-full pb-8 md:pb-12">
-=======
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-      <div className="w-full ml-2">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         <div className="w-full px-4 md:px-10 lg:px-16 py-8">
         <Button variant="ghost" asChild className="mb-6">
           <Link href="/shop">
@@ -335,11 +330,7 @@ export default function ProductDetailPage() {
                 {product.category.toUpperCase()}
               </Badge>
               <h1 className="text-4xl font-black mb-4">{product.name}</h1>
-<<<<<<< HEAD
               <p className="text-3xl font-black text-accent mb-4">₹{product.price.toFixed(2)}</p>
-=======
-              <p className="text-3xl font-black text-accent mb-4">${product.price.toFixed(2)}</p>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               <p className="text-muted-foreground text-lg leading-relaxed">{product.description}</p>
             </div>
 

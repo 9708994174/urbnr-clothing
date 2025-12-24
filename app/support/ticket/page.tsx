@@ -70,11 +70,7 @@ export default function SupportTicketPage() {
     <div className="min-h-screen flex flex-col">
       <NavHeader />
 
-<<<<<<< HEAD
       <main className="flex-1 py-12 px-4 pb-8 md:pb-12">
-=======
-      <main className="flex-1 py-12 px-4">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         <div className="container mx-auto max-w-2xl">
           <div className="mb-8">
             <h1 className="text-3xl font-bold mb-2">Submit a Support Ticket</h1>

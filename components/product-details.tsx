@@ -3,11 +3,7 @@
 import { useState } from "react"
 import type React from "react"
 import { Button } from "@/components/ui/button"
-<<<<<<< HEAD
 import { ChevronDown, ChevronLeft, ChevronRight, Heart, Share2 } from "lucide-react"
-=======
-import { ChevronDown, Heart, Share2 } from "lucide-react"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { AuthModal } from "@/components/auth-modal"
@@ -142,18 +138,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
   return (
     <>
-<<<<<<< HEAD
       <main className="w-full py-4 md:py-8 lg:py-12">
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 w-full px-4 md:px-10 lg:px-16">
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
             {/* Thumbnail Images - Hidden on mobile, shown on larger screens */}
             <div className="hidden sm:flex flex-col gap-2 overflow-y-auto max-h-[400px] md:max-h-[600px] lg:max-h-[700px]">
-=======
-      <main className="w-full py-8 md:py-12 ml-2">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 w-full px-4 md:px-10 lg:px-16">
-          <div className="flex gap-3 md:gap-4">
-            <div className="flex flex-col gap-2 overflow-y-auto max-h-[600px] md:max-h-[700px]">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               {productImages.map((img, idx) => (
                 <button
                   key={idx}
@@ -177,7 +166,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                 </button>
               ))}
             </div>
-<<<<<<< HEAD
             
             {/* Mobile Image Swiper - Show dots and arrows for navigation */}
             <div className="sm:hidden flex gap-2 justify-center items-center mb-2">
@@ -197,10 +185,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             </div>
             <div 
               className="relative w-full sm:flex-1 aspect-[3/4] bg-gray-50 overflow-hidden group cursor-zoom-in"
-=======
-            <div 
-              className="relative flex-1 aspect-[3/4] bg-gray-50 overflow-hidden group cursor-zoom-in"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               onMouseEnter={() => setIsZoomed(true)}
               onMouseLeave={() => setIsZoomed(false)}
               onMouseMove={handleMouseMove}
@@ -226,7 +210,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   priority
                 />
               </div>
-<<<<<<< HEAD
               
               {/* Mobile Navigation Arrows */}
               <div className="sm:hidden absolute inset-0 flex items-center justify-between px-2 pointer-events-none">
@@ -258,8 +241,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                 </Button>
               </div>
               
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               <div className="absolute top-4 right-4 flex flex-col gap-2">
                 <Button
                   variant="ghost"
@@ -282,42 +263,24 @@ export function ProductDetails({ product }: ProductDetailsProps) {
             </div>
           </div>
 
-<<<<<<< HEAD
           <div className="space-y-4 md:space-y-6">
             <div>
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase mb-2 md:mb-3">{product.name}</h1>
               <p className="text-2xl sm:text-3xl md:text-4xl font-black mb-3 md:mb-4">₹{product.price.toFixed(0)}</p>
               {product.stock_quantity === 0 && (
                 <p className="text-red-600 font-bold uppercase text-xs md:text-sm mb-3 md:mb-4">OUT OF STOCK</p>
-=======
-          <div className="space-y-6">
-            <div>
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-black uppercase mb-3">{product.name}</h1>
-              <p className="text-3xl md:text-4xl font-black mb-4">₹{product.price.toFixed(0)}</p>
-              {product.stock_quantity === 0 && (
-                <p className="text-red-600 font-bold uppercase text-sm mb-4">OUT OF STOCK</p>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               )}
             </div>
 
             {product.colors && product.colors.length > 0 && (
               <div>
-<<<<<<< HEAD
                 <h3 className="font-bold uppercase mb-2 md:mb-3 text-xs md:text-sm tracking-wider">COLORS</h3>
                 <div className="flex flex-wrap gap-2 md:gap-3">
-=======
-                <h3 className="font-bold uppercase mb-3 text-sm tracking-wider">COLORS</h3>
-                <div className="flex flex-wrap gap-3">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   {product.colors.map((color) => (
                     <button
                       key={color}
                       onClick={() => setSelectedColor(color)}
-<<<<<<< HEAD
                       className={`relative w-12 h-12 md:w-14 md:h-14 rounded border-2 transition-all ${
-=======
-                      className={`relative w-14 h-14 rounded border-2 transition-all ${
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         selectedColor === color ? "border-black scale-110" : "border-gray-300"
                       }`}
                       title={color}
@@ -334,7 +297,6 @@ export function ProductDetails({ product }: ProductDetailsProps) {
 
             {product.sizes && product.sizes.length > 0 && (
               <div>
-<<<<<<< HEAD
                 <div className="flex justify-between items-center mb-2 md:mb-3">
                   <h3 className="font-bold uppercase text-xs md:text-sm tracking-wider">SIZES</h3>
                   <button onClick={() => setSizeChartOpen(true)} className="text-xs md:text-sm underline hover:no-underline">
@@ -342,24 +304,11 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                   </button>
                 </div>
                 <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
-=======
-                <div className="flex justify-between items-center mb-3">
-                  <h3 className="font-bold uppercase text-sm tracking-wider">SIZES</h3>
-                  <button onClick={() => setSizeChartOpen(true)} className="text-sm underline hover:no-underline">
-                    SIZE CHART
-                  </button>
-                </div>
-                <div className="grid grid-cols-6 gap-2">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   {product.sizes.map((size) => (
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-<<<<<<< HEAD
                       className={`h-10 md:h-12 border-2 font-bold text-sm md:text-base transition-all ${
-=======
-                      className={`h-12 border-2 font-bold transition-all ${
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         selectedSize === size
                           ? "border-black bg-black text-white"
                           : "border-gray-300 hover:border-gray-400"
@@ -369,21 +318,13 @@ export function ProductDetails({ product }: ProductDetailsProps) {
                     </button>
                   ))}
                 </div>
-<<<<<<< HEAD
                 <p className="text-xs text-gray-600 mt-2 md:mt-3">FREE 1-2 day delivery on 5k+ pincodes</p>
-=======
-                <p className="text-xs text-gray-600 mt-3">FREE 1-2 day delivery on 5k+ pincodes</p>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               </div>
             )}
 
             <Button
               size="lg"
-<<<<<<< HEAD
               className="w-full font-black uppercase h-12 md:h-14 bg-black hover:bg-gray-800 text-white text-sm md:text-base tracking-wide"
-=======
-              className="w-full font-black uppercase h-14 bg-black hover:bg-gray-800 text-white text-base tracking-wide"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               onClick={handleAddToCart}
               disabled={isLoading || product.stock_quantity === 0}
             >
@@ -441,11 +382,7 @@ export function ProductDetails({ product }: ProductDetailsProps) {
       <SimilarProducts productId={product.id} category={product.category} title="YOU MAY ALSO LIKE" />
 
       {/* Customer Reviews Section */}
-<<<<<<< HEAD
       <section className="w-full px-4 md:px-10 lg:px-16 py-8 md:py-12">
-=======
-      <section className="w-full px-4 md:px-10 lg:px-16 py-12">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         <ProductReviews productId={product.id} />
       </section>
 

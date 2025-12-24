@@ -57,13 +57,8 @@ export function ShopSection() {
   if (loading) {
     return (
       <section className="py-12 bg-white w-full">
-<<<<<<< HEAD
         <div className="w-full px-4 md:px-10 lg:px-16">
           <h2 className="text-center text-3xl font-black uppercase mb-8">
-=======
-        <div className="w-full">
-          <h2 className="text-center text-3xl font-black uppercase mb-8 px-4">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
             BROWSE ALL
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 w-full">
@@ -78,13 +73,8 @@ export function ShopSection() {
 
   return (
     <section className="py-12 bg-white w-full">
-<<<<<<< HEAD
       <div className="w-full px-4 md:px-10 lg:px-16">
         <h2 className="text-center text-3xl font-black uppercase mb-8">
-=======
-      <div className="w-full">
-        <h2 className="text-center text-3xl font-black uppercase mb-8 px-4">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           BROWSE ALL
         </h2>
 
@@ -116,4 +106,3 @@ export function ShopSection() {
     </section>
   )
 }
-

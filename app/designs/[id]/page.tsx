@@ -1,18 +1,11 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { ShopHeader } from "@/components/shop-header"
-<<<<<<< HEAD
 import { MobilePageHeader } from "@/components/mobile-page-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-<<<<<<< HEAD
-=======
-import { ArrowLeft } from "lucide-react"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { ApplyDesignForm } from "@/components/apply-design-form"
 import { SimilarDesigns } from "@/components/similar-designs"
 
@@ -60,28 +53,11 @@ export default async function DesignDetailPage({
   return (
     <div className="min-h-screen flex flex-col bg-white w-full overflow-x-hidden">
       <ShopHeader />
-<<<<<<< HEAD
       <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
       <MobilePageHeader title={design.name || "Design"} backHref="/designs" />
 
       <main className="flex-1 py-14 w-full pt-20 lg:pt-14 pb-8 md:pb-12">
         <div className="w-full px-4 md:px-10 lg:px-16 max-w-7xl mx-auto">
-=======
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <main className="flex-1 py-14 w-full ml-2">
-        <div className="w-full px-4 md:px-10 lg:px-16 max-w-7xl">
-
-          {/* BACK */}
-          <Link
-            href="/designs"
-            className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest hover:underline mb-8"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Gallery
-          </Link>
-
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <div className="grid lg:grid-cols-2 gap-10">
 
             {/* IMAGE */}
@@ -167,14 +143,11 @@ export default async function DesignDetailPage({
                 </div>
 
                 <div className="flex justify-between">
-<<<<<<< HEAD
                   <span className="text-black/50">Template Rate</span>
                   <span className="text-green-600">₹{(design.template_rate || 299).toFixed(2)}</span>
                 </div>
 
                 <div className="flex justify-between">
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   <span className="text-black/50">Customizable</span>
                   <span>Yes</span>
                 </div>

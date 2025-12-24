@@ -2,10 +2,7 @@ import { createClient } from "@/lib/supabase/server"
 import { ShopHeader } from "@/components/shop-header"
 import { ShopPageClient } from "@/components/shop-page-client"
 import { Footer } from "@/components/footer"
-<<<<<<< HEAD
 import { MobilePageHeader } from "@/components/mobile-page-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
@@ -63,7 +60,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
     ascending: false,
   })
 
-<<<<<<< HEAD
   const pageTitle = search
     ? `Search: "${search}"`
     : category && category !== "all"
@@ -80,17 +76,6 @@ export default async function ShopPage({ searchParams }: PageProps) {
         {/* Page Header */}
         <section className="bg-secondary border-b border-border py-8 md:py-12 w-full">
           <div className="w-full px-4 md:px-10 lg:px-16">
-=======
-  return (
-    <div className="min-h-screen bg-background w-full overflow-x-hidden">
-      <ShopHeader />
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <main className="w-full">
-        {/* Page Header */}
-        <section className="bg-secondary border-b border-border py-8 md:py-12 w-full ml-2">
-          <div className="w-full px-0">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
             <h1 className="text-4xl md:text-5xl font-black uppercase text-center mb-3">
               {search
                 ? `Search Results for "${search}"`

@@ -10,16 +10,10 @@ interface ShopFiltersProps {
   onFilterChange?: (filters: any) => void
   onApply?: (filters: any) => void
   priceRange?: { min: number; max: number }
-<<<<<<< HEAD
   isMobile?: boolean
 }
 
 export function ShopFilters({ onFilterChange, onApply, priceRange, isMobile = false }: ShopFiltersProps) {
-=======
-}
-
-export function ShopFilters({ onFilterChange, onApply, priceRange }: ShopFiltersProps) {
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   const defaultMaxPrice = priceRange?.max || 5000
   const defaultMinPrice = priceRange?.min || 0
   
@@ -124,31 +118,20 @@ export function ShopFilters({ onFilterChange, onApply, priceRange }: ShopFilters
   }
 
   const formatPrice = (price: number) => {
-<<<<<<< HEAD
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: 'INR',
-=======
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(price)
   }
 
-<<<<<<< HEAD
   const containerClasses = isMobile
     ? "w-full bg-white p-6 overflow-y-auto"
     : "w-64 bg-white border-r border-black/10 p-6 h-full overflow-y-auto sticky top-16 max-h-[calc(100vh-64px)] hidden lg:block"
 
   return (
     <div className={containerClasses}>
-=======
-  return (
-    <div className="w-64 bg-white border-r border-black/10 p-6 h-full overflow-y-auto sticky top-16 max-h-[calc(100vh-64px)]">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-black uppercase">FILTERS</h2>
         {getActiveCount() > 0 && (
@@ -177,7 +160,8 @@ export function ShopFilters({ onFilterChange, onApply, priceRange }: ShopFilters
           </CollapsibleTrigger>
           <CollapsibleContent className="py-3 space-y-2">
             {options.map((option) => {
-              const isSelected = filters[key as keyof typeof filters]?.includes(option)
+              const filterValue = filters[key as keyof typeof filters]
+              const isSelected = Array.isArray(filterValue) && filterValue.includes(option)
               return (
                 <label
                   key={option}

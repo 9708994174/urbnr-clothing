@@ -2,7 +2,6 @@
 
 import type React from "react"
 import { ShopHeader } from "@/components/shop-header"
-<<<<<<< HEAD
 import { MobilePageHeader } from "@/components/mobile-page-header"
 import { usePathname } from "next/navigation"
 
@@ -34,20 +33,6 @@ export function DashboardLayout({ children, title, backHref }: DashboardLayoutPr
       <MobilePageHeader title={pageTitle} backHref={defaultBackHref} />
 
       <main className="w-full pt-16 lg:pt-0">
-=======
-
-interface DashboardLayoutProps {
-  children: React.ReactNode
-}
-
-export function DashboardLayout({ children }: DashboardLayoutProps) {
-  return (
-    <div className="min-h-screen bg-neutral-50 w-full overflow-x-hidden">
-      <ShopHeader />
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <main className="w-full">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         <div className="w-full">{children}</div>
       </main>
     </div>

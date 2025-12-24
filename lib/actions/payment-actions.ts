@@ -1,8 +1,11 @@
 "use server"
 
 import { createClient } from "@/lib/supabase/server"
+import Stripe from "stripe"
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: "2024-12-18.acacia",
+})
 
 export async function createCheckoutSession(cartItems: any[], shippingAddress?: any) {
   const supabase = await createClient()
@@ -16,7 +19,6 @@ export async function createCheckoutSession(cartItems: any[], shippingAddress?: 
   }
 
   try {
-<<<<<<< HEAD
     // Get base URL - prioritize NEXT_PUBLIC_SITE_URL, fallback to Vercel's automatic URL
     let baseUrl: string
     
@@ -39,17 +41,6 @@ export async function createCheckoutSession(cartItems: any[], shippingAddress?: 
     if (baseUrl.includes('blob') || baseUrl.includes('vercel_blob')) {
       console.error('[Payment] Invalid baseUrl detected (blob URL):', baseUrl)
       baseUrl = "http://localhost:3000" // Safe fallback
-=======
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
-    let baseUrl: string
-
-    if (siteUrl) {
-      // If NEXT_PUBLIC_SITE_URL is set, use it
-      baseUrl = siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`
-    } else {
-      // Fallback for local development
-      baseUrl = "http://localhost:3000"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
     }
 
     const lineItems = cartItems.map((item) => ({
@@ -92,35 +83,11 @@ export async function handlePaymentSuccess(sessionId: string) {
 
     if (session.payment_status === "paid") {
       const userId = session.metadata.user_id
-<<<<<<< HEAD
       
       // For cart orders, orders are already created by the webhook or checkout route
       // Just clear the cart items
       if (session.metadata.cart_items) {
         const cartItemIds = JSON.parse(session.metadata.cart_items)
-=======
-      const cartItemIds = JSON.parse(session.metadata.cart_items)
-
-      const { data: cartItems } = await supabase
-        .from("cart_items")
-        .select("*, product:catalog_products(*)")
-        .in("id", cartItemIds)
-
-      if (cartItems) {
-        const orders = cartItems.map((item: any) => ({
-          user_id: userId,
-          catalog_product_id: item.product_id,
-          quantity: item.quantity,
-          size: item.size,
-          color: item.color,
-          amount: item.product.price * item.quantity,
-          payment_intent_id: session.payment_intent,
-          payment_status: "paid",
-          order_number: `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`.toUpperCase(),
-        }))
-
-        await supabase.from("orders").insert(orders)
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         await supabase.from("cart_items").delete().in("id", cartItemIds)
       }
 

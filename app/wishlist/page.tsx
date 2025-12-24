@@ -4,10 +4,7 @@ import { useEffect, useState } from "react"
 import { createClient } from "@/lib/supabase/client"
 import { ShopHeader } from "@/components/shop-header"
 import { Footer } from "@/components/footer"
-<<<<<<< HEAD
 import { MobilePageHeader } from "@/components/mobile-page-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Heart, ShoppingBag, Trash2, ArrowLeft } from "lucide-react"
@@ -123,14 +120,9 @@ export default function WishlistPage() {
     return (
       <div className="min-h-screen w-full overflow-x-hidden">
         <ShopHeader />
-<<<<<<< HEAD
         <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
         <MobilePageHeader title="Wishlist" backHref="/shop" />
         <div className="flex items-center justify-center h-[60vh] pt-16 lg:pt-0">
-=======
-        <div className="h-16"></div> {/* Spacer for fixed header */}
-        <div className="flex items-center justify-center h-[60vh]">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <div className="text-center">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-accent mx-auto mb-4"></div>
             <p className="text-muted-foreground font-bold uppercase">Loading wishlist...</p>
@@ -144,14 +136,9 @@ export default function WishlistPage() {
     return (
       <div className="min-h-screen w-full overflow-x-hidden">
         <ShopHeader />
-<<<<<<< HEAD
         <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
         <MobilePageHeader title="Wishlist" backHref="/shop" />
         <div className="flex items-center justify-center h-[60vh] pt-16 lg:pt-0">
-=======
-        <div className="h-16"></div> {/* Spacer for fixed header */}
-        <div className="flex items-center justify-center h-[60vh]">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <div className="text-center max-w-md px-4">
             <Heart className="h-24 w-24 text-muted-foreground mx-auto mb-6" />
             <h2 className="text-3xl font-black uppercase mb-4">Sign in to view wishlist</h2>
@@ -167,14 +154,9 @@ export default function WishlistPage() {
     return (
       <div className="min-h-screen w-full overflow-x-hidden">
         <ShopHeader />
-<<<<<<< HEAD
         <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
         <MobilePageHeader title="Wishlist" backHref="/shop" />
         <div className="flex items-center justify-center h-[60vh] pt-16 lg:pt-0">
-=======
-        <div className="h-16"></div> {/* Spacer for fixed header */}
-        <div className="flex items-center justify-center h-[60vh]">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <div className="text-center max-w-md px-4">
             <Heart className="h-24 w-24 text-muted-foreground mx-auto mb-6" />
             <h2 className="text-3xl font-black uppercase mb-4">Your wishlist is empty</h2>
@@ -194,7 +176,6 @@ export default function WishlistPage() {
   return (
     <div className="min-h-screen bg-background w-full overflow-x-hidden">
       <ShopHeader />
-<<<<<<< HEAD
       <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
       <MobilePageHeader title="Wishlist" backHref="/shop" />
 
@@ -208,27 +189,6 @@ export default function WishlistPage() {
           {wishlistItems.map((item) => (
             <Card key={item.id} className="group overflow-hidden border border-black/10 hover:border-black/20 transition-colors flex flex-col">
               <div className="relative aspect-[2/3] md:aspect-[3/4] bg-muted overflow-hidden flex-shrink-0">
-=======
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <main className="w-full px-4 md:px-10 lg:px-16 py-8 md:py-12 ml-2">
-        <div className="mb-8">
-          <Link href="/shop" className="inline-flex items-center text-sm font-bold uppercase hover:text-accent">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Continue Shopping
-          </Link>
-        </div>
-
-        <div className="flex items-center gap-3 mb-8">
-          <Heart className="h-8 w-8 text-accent fill-accent" />
-          <h1 className="text-4xl md:text-5xl font-black uppercase">My Wishlist ({wishlistItems.length})</h1>
-        </div>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-          {wishlistItems.map((item) => (
-            <Card key={item.id} className="group overflow-hidden">
-              <div className="relative aspect-[3/4] bg-muted overflow-hidden">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                 <Link
                   href={`/product/${item.product.id}`}
                   target="_blank"
@@ -243,7 +203,6 @@ export default function WishlistPage() {
                 <Button
                   size="icon"
                   variant="secondary"
-<<<<<<< HEAD
                   className="absolute top-2 right-2 h-8 w-8 md:h-9 md:w-9 bg-white/90 hover:bg-white text-destructive shadow-md"
                   onClick={() => removeFromWishlist(item.id)}
                 >
@@ -251,20 +210,10 @@ export default function WishlistPage() {
                 </Button>
               </div>
               <CardContent className="p-3 md:p-4 space-y-2 md:space-y-3 flex-1 flex flex-col">
-=======
-                  className="absolute top-2 right-2 bg-background/90 hover:bg-background text-destructive"
-                  onClick={() => removeFromWishlist(item.id)}
-                >
-                  <Trash2 className="h-4 w-4" />
-                </Button>
-              </div>
-              <CardContent className="p-4 space-y-3">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                 <Link
                   href={`/product/${item.product.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-<<<<<<< HEAD
                   className="flex-shrink-0"
                 >
                   <h3 className="font-bold uppercase text-xs md:text-sm hover:text-accent transition-colors line-clamp-2 leading-tight mb-1">
@@ -285,24 +234,6 @@ export default function WishlistPage() {
                     <span className="sm:hidden">{item.product.stock_quantity === 0 ? "Out" : "Add"}</span>
                   </Button>
                 </div>
-=======
-                >
-                  <h3 className="font-bold uppercase text-sm hover:text-accent transition-colors line-clamp-2">
-                    {item.product.name}
-                  </h3>
-                </Link>
-                <p className="text-sm text-muted-foreground capitalize">{item.product.category}</p>
-                <p className="text-lg font-black">₹{item.product.price.toFixed(2)}</p>
-                <Button
-                  size="sm"
-                  className="w-full font-bold uppercase"
-                  onClick={() => addToCart(item.product.id)}
-                  disabled={item.product.stock_quantity === 0}
-                >
-                  <ShoppingBag className="mr-2 h-4 w-4" />
-                  {item.product.stock_quantity === 0 ? "Out of Stock" : "Add to Cart"}
-                </Button>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               </CardContent>
             </Card>
           ))}

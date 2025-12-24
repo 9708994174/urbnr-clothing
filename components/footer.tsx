@@ -4,17 +4,10 @@ import { UrbnrLogo } from "@/components/urbnr-logo"
 
 export function Footer() {
   return (
-<<<<<<< HEAD
     <footer className="bg-black text-white w-full pb-16 lg:pb-0">
       {/* FULL WIDTH WRAPPER */}
       <div className="px-4 md:px-10 lg:px-16 py-14 w-full">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
-=======
-    <footer className="bg-black text-white w-full">
-      {/* FULL WIDTH WRAPPER */}
-      <div className="px-4 md:px-10 lg:px-16 py-14 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           
           {/* BRAND */}
           <div className="space-y-5">
@@ -54,15 +47,10 @@ export function Footer() {
               <li><Link href="/designs" className="text-gray-400 hover:text-white transition-colors">Custom Designs</Link></li>
               <li><Link href="/dashboard" className="text-gray-400 hover:text-white transition-colors">Dashboard</Link></li>
               <li><Link href="/support" className="text-gray-400 hover:text-white transition-colors">My Account</Link></li>
-<<<<<<< HEAD
-=======
-              <li><Link href="/admin/products" className="text-gray-400 hover:text-white transition-colors">Admin</Link></li>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               <li><Link href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
 
-<<<<<<< HEAD
           {/* ADMIN */}
           <div>
             <h3 className="font-bold mb-5 uppercase text-sm md:text-[15px] tracking-wider">
@@ -75,8 +63,6 @@ export function Footer() {
             </ul>
           </div>
 
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           {/* SOCIAL */}
           <div>
             <h3 className="font-bold mb-5 uppercase text-sm md:text-[15px] tracking-wider">

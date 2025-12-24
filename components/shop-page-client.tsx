@@ -4,14 +4,9 @@ import { useState, useMemo, useEffect } from "react"
 import { ProductGrid } from "@/components/product-grid"
 import { ShopFilters } from "@/components/shop-filters"
 import { Button } from "@/components/ui/button"
-<<<<<<< HEAD
 import { Filter, X } from "lucide-react"
 import type { Product } from "@/lib/types"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-=======
-import { Filter } from "lucide-react"
-import type { Product } from "@/lib/types"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 interface ShopPageClientProps {
   initialProducts: Product[]
@@ -22,12 +17,9 @@ interface ShopPageClientProps {
 export function ShopPageClient({ initialProducts, category, search }: ShopPageClientProps) {
   const [filters, setFilters] = useState<any>(null)
   const [appliedFilters, setAppliedFilters] = useState<any>(null)
-<<<<<<< HEAD
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
   const [productsToShow, setProductsToShow] = useState(20)
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
   // Calculate price range from products
   const priceRange = useMemo(() => {
@@ -191,7 +183,6 @@ export function ShopPageClient({ initialProducts, category, search }: ShopPageCl
     return products
   }, [initialProducts, appliedFilters, priceRange])
 
-<<<<<<< HEAD
   // Update displayed products when filtered products change
   useEffect(() => {
     setDisplayedProducts(filteredProducts.slice(0, productsToShow))
@@ -202,14 +193,10 @@ export function ShopPageClient({ initialProducts, category, search }: ShopPageCl
   }
 
   const hasMoreProducts = filteredProducts.length > productsToShow
-
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   return (
     <>
       {!search && (
         <section className="bg-background border-b border-border sticky top-16 z-40 w-full">
-<<<<<<< HEAD
           <div className="w-full px-4 md:px-10 lg:px-16 py-4">
             <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
               <Button
@@ -222,11 +209,6 @@ export function ShopPageClient({ initialProducts, category, search }: ShopPageCl
                 FILTERS
               </Button>
               <Filter className="h-5 w-5 text-muted-foreground flex-shrink-0 hidden lg:block" />
-=======
-          <div className="w-full px-4 md:px-10 lg:px-16 py-4 ml-4 md:ml-6">
-            <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
-              <Filter className="h-5 w-5 text-muted-foreground flex-shrink-0" />
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               {categories.map((cat) => (
                 <a key={cat.value} href={`/shop${cat.value !== "all" ? `?category=${cat.value}` : ""}`} className="cursor-pointer">
                   <Button
@@ -259,11 +241,7 @@ export function ShopPageClient({ initialProducts, category, search }: ShopPageCl
           </div>
 
           {/* Products Grid */}
-<<<<<<< HEAD
           <div className="flex-1 w-full px-4 md:px-10 lg:px-16">
-=======
-          <div className="flex-1 w-full px-4 md:px-10 lg:px-16 ml-4 md:ml-6">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
             {filteredProducts.length === 0 ? (
               <div className="text-center py-16">
                 <p className="text-xl text-muted-foreground font-bold uppercase">No products found</p>
@@ -274,7 +252,6 @@ export function ShopPageClient({ initialProducts, category, search }: ShopPageCl
             ) : (
               <>
                 <p className="text-sm text-muted-foreground mb-6">
-<<<<<<< HEAD
                   Showing {displayedProducts.length} of {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"}
                 </p>
                 <ProductGrid products={displayedProducts} />
@@ -289,17 +266,11 @@ export function ShopPageClient({ initialProducts, category, search }: ShopPageCl
                     </Button>
                   </div>
                 )}
-=======
-                  Showing {filteredProducts.length} {filteredProducts.length === 1 ? "product" : "products"}
-                </p>
-                <ProductGrid products={filteredProducts} />
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               </>
             )}
           </div>
         </div>
       </section>
-<<<<<<< HEAD
 
       {/* Mobile Filters Dialog */}
       <Dialog open={mobileFiltersOpen} onOpenChange={setMobileFiltersOpen}>
@@ -327,8 +298,6 @@ export function ShopPageClient({ initialProducts, category, search }: ShopPageCl
           />
         </DialogContent>
       </Dialog>
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
     </>
   )
 }

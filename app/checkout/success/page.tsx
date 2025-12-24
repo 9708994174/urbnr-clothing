@@ -16,7 +16,6 @@ export default function CheckoutSuccessPage() {
 
   useEffect(() => {
     if (sessionId) {
-<<<<<<< HEAD
       handlePaymentSuccess()
     } else {
       setLoading(false)
@@ -24,20 +23,12 @@ export default function CheckoutSuccessPage() {
   }, [sessionId])
 
   const handlePaymentSuccess = async () => {
-=======
-      clearCart()
-    }
-  }, [sessionId])
-
-  const clearCart = async () => {
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
     try {
       const supabase = createClient()
       const {
         data: { user },
       } = await supabase.auth.getUser()
 
-<<<<<<< HEAD
       if (!user) {
         setLoading(false)
         return
@@ -85,14 +76,6 @@ export default function CheckoutSuccessPage() {
       }
     } catch (error) {
       console.error("Error processing payment success:", error)
-=======
-      if (user) {
-        // Clear the cart after successful payment
-        await supabase.from("cart_items").delete().eq("user_id", user.id)
-      }
-    } catch (error) {
-      console.error("Error clearing cart:", error)
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
     } finally {
       setLoading(false)
     }
@@ -122,7 +105,6 @@ export default function CheckoutSuccessPage() {
           <p className="text-muted-foreground text-lg">
             Thank you for your purchase! Your order has been successfully placed and is being processed.
           </p>
-<<<<<<< HEAD
           <div className="bg-neutral-100 p-4 rounded-lg space-y-2">
             <Package className="h-8 w-8 text-accent mx-auto mb-2" />
             <p className="font-bold">You'll receive an order confirmation email</p>
@@ -131,12 +113,6 @@ export default function CheckoutSuccessPage() {
             <Link href="/dashboard/orders" className="text-sm font-bold text-accent hover:underline">
               View Orders →
             </Link>
-=======
-          <div className="bg-neutral-100 p-4 rounded-lg">
-            <Package className="h-8 w-8 text-accent mx-auto mb-2" />
-            <p className="font-bold">You will receive an email confirmation shortly</p>
-            <p className="text-sm text-muted-foreground mt-1">Check your orders page to track your delivery</p>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           </div>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button asChild size="lg" className="flex-1 font-bold uppercase">

@@ -12,10 +12,7 @@ import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-<<<<<<< HEAD
 import { Footer } from "@/components/footer"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 export default function CreateOrderPage({ params }: { params: Promise<{ id: string }> }) {
   const [productId, setProductId] = useState<string | null>(null)
@@ -44,29 +41,22 @@ export default function CreateOrderPage({ params }: { params: Promise<{ id: stri
         return
       }
 
-<<<<<<< HEAD
       const { data } = await supabase
         .from("products")
         .select("*")
         .eq("id", productId)
         .eq("user_id", user.id)
         .single()
-=======
-      const { data } = await supabase.from("products").select("*").eq("id", productId).eq("user_id", user.id).single()
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
       if (data) {
         setProduct(data)
         if (data.status !== "approved") {
           router.push(`/dashboard/products/${productId}`)
         }
-<<<<<<< HEAD
         // Pre-fill amount with product price if available
         if (data.price) {
           setAmount(data.price.toString())
         }
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       }
 
       setIsLoading(false)
@@ -88,7 +78,6 @@ export default function CreateOrderPage({ params }: { params: Promise<{ id: stri
 
       if (!user) throw new Error("Not authenticated")
 
-<<<<<<< HEAD
       // Validate amount
       const orderAmount = Number.parseFloat(amount)
       if (!orderAmount || orderAmount <= 0) {
@@ -205,24 +194,6 @@ export default function CreateOrderPage({ params }: { params: Promise<{ id: stri
       console.error("Order creation failed:", err)
       const errorMessage = err?.message || err?.details || err?.hint || JSON.stringify(err) || "Failed to create order"
       setError(errorMessage)
-=======
-      const { data: order, error: orderError } = await supabase
-        .from("orders")
-        .insert({
-          user_id: user.id,
-          product_id: productId,
-          amount: Number.parseFloat(amount),
-          payment_status: "pending",
-        })
-        .select()
-        .single()
-
-      if (orderError) throw orderError
-
-      router.push(`/dashboard/orders/${order.id}/checkout`)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to create order")
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
     } finally {
       setIsCreating(false)
     }
@@ -249,7 +220,6 @@ export default function CreateOrderPage({ params }: { params: Promise<{ id: stri
   }
 
   return (
-<<<<<<< HEAD
     <>
       <DashboardLayout>
         <div className="space-y-8 sm:space-y-10 w-full pb-8 md:pb-12">
@@ -378,77 +348,5 @@ export default function CreateOrderPage({ params }: { params: Promise<{ id: stri
       </DashboardLayout>
       <Footer />
     </>
-=======
-    <DashboardLayout>
-      <div className="max-w-2xl mx-auto space-y-8">
-        <Button variant="ghost" asChild>
-          <Link href={`/dashboard/products/${productId}`}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Product
-          </Link>
-        </Button>
-
-        <div>
-          <h1 className="text-3xl font-bold">Create Order</h1>
-          <p className="text-muted-foreground mt-2">Set the order amount to proceed with payment</p>
-        </div>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Product Information</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Product Name</span>
-              <span className="font-semibold">{product.product_name}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Type</span>
-              <span className="font-semibold capitalize">{product.product_type}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Status</span>
-              <span className="font-semibold capitalize">{product.status}</span>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>Order Details</CardTitle>
-            <CardDescription>Enter the approved price for this product</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleCreateOrder} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="amount">Amount (USD)</Label>
-                <Input
-                  id="amount"
-                  type="number"
-                  step="0.01"
-                  min="0.01"
-                  placeholder="0.00"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  required
-                />
-                <p className="text-sm text-muted-foreground">Enter the price provided by our team</p>
-              </div>
-
-              {error && (
-                <div className="p-3 bg-destructive/10 border border-destructive rounded-lg">
-                  <p className="text-sm text-destructive">{error}</p>
-                </div>
-              )}
-
-              <Button type="submit" disabled={isCreating || !amount} className="w-full">
-                {isCreating ? "Creating Order..." : "Create Order & Proceed to Payment"}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    </DashboardLayout>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   )
 }

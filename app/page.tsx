@@ -1,19 +1,12 @@
 import { createClient } from "@/lib/supabase/server"
-<<<<<<< HEAD
-=======
 import { ShopHeader } from "@/components/shop-header"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { HeroCarousel } from "@/components/hero-carousel"
 import Link from "next/link"
 import Image from "next/image"
 import { ProductCard } from "@/components/product-card"
 import { Footer } from "@/components/footer"
 import { ShopSection } from "@/components/shop-section"
-<<<<<<< HEAD
 import { MobileSearchBox } from "@/components/mobile-search-box"
-import { ShopHeader } from "@/components/shop-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 /* ---------------- TYPES ---------------- */
 
@@ -94,7 +87,6 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen bg-background w-full overflow-x-hidden">
       <ShopHeader />
-<<<<<<< HEAD
       <div className="hidden lg:block h-16"></div> {/* Spacer for top header on desktop only */}
 
       <main className="w-full">
@@ -106,11 +98,6 @@ export default async function HomePage() {
         {/* Spacer for fixed search box on mobile */}
         <div className="lg:hidden h-16"></div>
 
-=======
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <main className="w-full ml-2">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         {/* ---------------- HERO (UPDATED ONLY HERE) ---------------- */}
         <section className="w-full">
           <div className="grid md:grid-cols-3 gap-0 w-full">
@@ -122,13 +109,8 @@ export default async function HomePage() {
 
         {/* ---------------- FEATURED CATEGORIES ---------------- */}
         <section className="py-12 bg-white w-full">
-<<<<<<< HEAD
           <div className="w-full px-4 md:px-10 lg:px-16">
             <h2 className="text-center text-3xl font-black uppercase mb-8">
-=======
-          <div className="w-full">
-            <h2 className="text-center text-3xl font-black uppercase mb-8 px-4">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               FEATURED CATEGORIES
             </h2>
 
@@ -185,7 +167,6 @@ export default async function HomePage() {
           </div>
         </section>
 
-<<<<<<< HEAD
         {/* ---------------- SALE BANNER ---------------- */}
         <section className="w-full py-6 bg-white">
           <div className="w-full px-4 md:px-10 lg:px-16">
@@ -201,21 +182,6 @@ export default async function HomePage() {
               </div>
             </Link>
           </div>
-=======
-        {/* ---------------- SALE BANNER SCREENSHOT ---------------- */}
-        <section className="w-full">
-          <Link href="/shop?category=sale">
-            <div className="relative w-full aspect-[1877/504] cursor-pointer">
-              <Image
-                src="/images/image.png"
-                alt="Last chance! Up to 40% OFF"
-                fill
-                className="object-cover transition-transform duration-500 hover:scale-[1.01]"
-                priority
-              />
-            </div>
-          </Link>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         </section>
 
         {/* ---------------- CUSTOMIZE CTA (PROMINENT) ---------------- */}
@@ -242,13 +208,8 @@ export default async function HomePage() {
 
         {/* ---------------- PRODUCTS ---------------- */}
         <section className="py-12 bg-gray-50 w-full">
-<<<<<<< HEAD
           <div className="w-full px-4 md:px-10 lg:px-16">
             <h2 className="text-center text-3xl font-black uppercase mb-8">
-=======
-          <div className="w-full">
-            <h2 className="text-center text-3xl font-black uppercase mb-8 px-4">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               NEW AND POPULAR
             </h2>
 

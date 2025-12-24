@@ -32,7 +32,6 @@ export default async function DashboardPage() {
 
   return (
     <>
-<<<<<<< HEAD
       <DashboardLayout title="Dashboard" backHref="/">
         <div className="space-y-6 md:space-y-10 w-full pb-8 md:pb-12">
           {/* HERO */}
@@ -41,17 +40,6 @@ export default async function DashboardPage() {
               Welcome, {profile?.full_name || "Guest"}
             </h1>
             <p className="text-white/70 mt-2 text-base sm:text-lg">
-=======
-      <DashboardLayout>
-        <div className="space-y-10 w-full ml-2">
-
-          {/* HERO */}
-          <div className="bg-black text-white w-full py-10">
-            <h1 className="text-4xl font-black uppercase tracking-tight">
-              Welcome, {profile?.full_name || "Guest"}
-            </h1>
-            <p className="text-white/70 mt-2 text-lg">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               Manage your custom merchandise projects
             </p>
           </div>
@@ -167,7 +155,6 @@ export default async function DashboardPage() {
                       </div>
 
                       <span
-<<<<<<< HEAD
                         className={`h-10 w-full sm:w-auto flex items-center justify-center text-xs sm:text-sm font-black uppercase border-2 px-4 ${
                           product.status === "approved"
                             ? "border-green-600 text-green-600 bg-green-50"
@@ -178,16 +165,6 @@ export default async function DashboardPage() {
                             : product.status === "completed"
                               ? "border-purple-600 text-purple-600 bg-purple-50"
                               : "border-red-600 text-red-600 bg-red-50"
-=======
-                        className={`px-3 py-1 text-xs font-black uppercase border ${
-                          product.status === "approved"
-                            ? "border-green-600 text-green-600"
-                            : product.status === "pending"
-                            ? "border-yellow-600 text-yellow-600"
-                            : product.status === "under_review"
-                            ? "border-blue-600 text-blue-600"
-                            : "border-red-600 text-red-600"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         }`}
                       >
                         {product.status.replace("_", " ")}

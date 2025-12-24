@@ -98,11 +98,7 @@ export default function AdminSetupPage() {
       <DashboardNav />
       <div className="min-h-screen bg-background w-full overflow-x-hidden">
         <div className="h-16"></div>
-<<<<<<< HEAD
         <div className="flex items-center justify-center min-h-[80vh] px-4 pb-8 md:pb-12">
-=======
-        <div className="flex items-center justify-center min-h-[80vh] px-4">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <Card className="w-full max-w-md">
             <CardHeader>
               <CardTitle className="text-2xl font-black uppercase">Admin Setup</CardTitle>

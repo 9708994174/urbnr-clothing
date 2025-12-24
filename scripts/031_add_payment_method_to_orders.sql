@@ -14,3 +14,4 @@ SELECT 'Payment method column added to orders table!' as result;
 
 
 
+

@@ -9,14 +9,11 @@ import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
 import { loadStripe } from "@stripe/stripe-js"
-<<<<<<< HEAD
 import { Footer } from "@/components/footer"
 import { ShopHeader } from "@/components/shop-header"
 import { MapPin, CreditCard, Phone } from "lucide-react"
 import Link from "next/link"
 import { MobilePageHeader } from "@/components/mobile-page-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
@@ -39,7 +36,6 @@ export default function CheckoutPage() {
   const [shippingInfo, setShippingInfo] = useState({
     fullName: "",
     email: "",
-<<<<<<< HEAD
     phone: "",
     address: "",
     address_line2: "",
@@ -76,18 +72,6 @@ export default function CheckoutPage() {
       offers: ["No extra charges", "Pay on delivery"],
     },
   ]
-
-=======
-    address: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    country: "USA",
-  })
-  const router = useRouter()
-  const { toast } = useToast()
-
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   useEffect(() => {
     loadCart()
   }, [])
@@ -124,7 +108,6 @@ export default function CheckoutPage() {
       }
       setCartItems(data)
 
-<<<<<<< HEAD
       // Load user profile and shipping address for pre-filling
       const { data: profile } = await supabase.from("profiles").select("email, full_name").eq("id", user.id).single()
 
@@ -149,12 +132,6 @@ export default function CheckoutPage() {
           country: defaultAddress.country || "India",
         })
       } else if (profile) {
-=======
-      // Load user profile for pre-filling
-      const { data: profile } = await supabase.from("profiles").select("email, full_name").eq("id", user.id).single()
-
-      if (profile) {
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         setShippingInfo((prev) => ({
           ...prev,
           email: profile.email || "",
@@ -178,7 +155,6 @@ export default function CheckoutPage() {
   }
 
   const handleCheckout = async () => {
-<<<<<<< HEAD
     if (!shippingInfo.fullName || !shippingInfo.email || !shippingInfo.phone || !shippingInfo.address || !shippingInfo.city || !shippingInfo.state || !shippingInfo.zipCode) {
       toast({
         title: "Incomplete information",
@@ -194,12 +170,6 @@ export default function CheckoutPage() {
       toast({
         title: "Invalid phone number",
         description: "Please enter a valid 10-digit Indian phone number",
-=======
-    if (!shippingInfo.fullName || !shippingInfo.email || !shippingInfo.address || !shippingInfo.city) {
-      toast({
-        title: "Incomplete information",
-        description: "Please fill in all required fields",
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         variant: "destructive",
       })
       return
@@ -213,7 +183,6 @@ export default function CheckoutPage() {
       } = await supabase.auth.getUser()
 
       if (!user) {
-<<<<<<< HEAD
         router.push("/auth/login")
         return
       }
@@ -388,19 +357,11 @@ export default function CheckoutPage() {
       }
 
       // Create checkout session for card/UPI
-=======
-        router.push("/auth/signin")
-        return
-      }
-
-      // Create checkout session
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           cartItems,
-<<<<<<< HEAD
           shippingInfo: {
             ...shippingInfo,
             fullName: shippingInfo.fullName,
@@ -422,16 +383,6 @@ export default function CheckoutPage() {
 
       if (!sessionId) {
         throw new Error("No session ID returned from checkout API")
-=======
-          shippingInfo,
-        }),
-      })
-
-      const { sessionId, error } = await response.json()
-
-      if (error) {
-        throw new Error(error)
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       }
 
       // Redirect to Stripe Checkout
@@ -444,7 +395,6 @@ export default function CheckoutPage() {
       }
     } catch (error: any) {
       console.error("Checkout error:", error)
-<<<<<<< HEAD
       const errorMessage = error.message || "An unexpected error occurred. Please try again."
       
       // Provide more helpful error messages
@@ -461,11 +411,6 @@ export default function CheckoutPage() {
       toast({
         title: "Checkout Failed",
         description: userFriendlyMessage,
-=======
-      toast({
-        title: "Checkout failed",
-        description: error.message || "Please try again",
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         variant: "destructive",
       })
     } finally {
@@ -485,7 +430,6 @@ export default function CheckoutPage() {
   }
 
   return (
-<<<<<<< HEAD
     <>
       <ShopHeader />
       <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
@@ -668,84 +612,10 @@ export default function CheckoutPage() {
                     </div>
                   </div>
                 ))}
-=======
-    <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-black uppercase mb-8">Checkout</h1>
+                </CardContent>
+              </Card>
+            </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Shipping Form */}
-          <div className="lg:col-span-2">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl font-black uppercase">Shipping Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="fullName">Full Name *</Label>
-                    <Input
-                      id="fullName"
-                      value={shippingInfo.fullName}
-                      onChange={(e) => setShippingInfo({ ...shippingInfo, fullName: e.target.value })}
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={shippingInfo.email}
-                      onChange={(e) => setShippingInfo({ ...shippingInfo, email: e.target.value })}
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <Label htmlFor="address">Address *</Label>
-                  <Input
-                    id="address"
-                    value={shippingInfo.address}
-                    onChange={(e) => setShippingInfo({ ...shippingInfo, address: e.target.value })}
-                    placeholder="123 Main Street"
-                  />
-                </div>
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div>
-                    <Label htmlFor="city">City *</Label>
-                    <Input
-                      id="city"
-                      value={shippingInfo.city}
-                      onChange={(e) => setShippingInfo({ ...shippingInfo, city: e.target.value })}
-                      placeholder="New York"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="state">State</Label>
-                    <Input
-                      id="state"
-                      value={shippingInfo.state}
-                      onChange={(e) => setShippingInfo({ ...shippingInfo, state: e.target.value })}
-                      placeholder="NY"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="zipCode">ZIP Code</Label>
-                    <Input
-                      id="zipCode"
-                      value={shippingInfo.zipCode}
-                      onChange={(e) => setShippingInfo({ ...shippingInfo, zipCode: e.target.value })}
-                      placeholder="10001"
-                    />
-                  </div>
-                </div>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
-              </CardContent>
-            </Card>
-          </div>
-
-<<<<<<< HEAD
             {/* Order Summary */}
             <div className="lg:col-span-1">
               <Card className="sticky top-24 border-2 border-black/10">
@@ -753,15 +623,6 @@ export default function CheckoutPage() {
                   <CardTitle className="text-xl font-black uppercase">Order Summary</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
-=======
-          {/* Order Summary */}
-          <div className="lg:col-span-1">
-            <Card className="sticky top-24">
-              <CardHeader>
-                <CardTitle className="text-2xl font-black uppercase">Order Summary</CardTitle>
-              </CardHeader>
-              <CardContent>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                 <div className="space-y-3 mb-6">
                   {cartItems.map((item) => (
                     <div key={item.id} className="flex justify-between text-sm">
@@ -771,28 +632,19 @@ export default function CheckoutPage() {
                           {item.size} / {item.color} × {item.quantity}
                         </div>
                       </div>
-<<<<<<< HEAD
                       <div className="font-bold">₹{(item.product.price * item.quantity).toFixed(2)}</div>
-=======
-                      <div className="font-bold">${(item.product.price * item.quantity).toFixed(2)}</div>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                     </div>
                   ))}
                 </div>
                 <div className="space-y-2 mb-6">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Subtotal</span>
-<<<<<<< HEAD
                     <span className="font-bold">₹{calculateTotal().toFixed(2)}</span>
-=======
-                    <span className="font-bold">${calculateTotal().toFixed(2)}</span>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Shipping</span>
                     <span className="font-bold">FREE</span>
                   </div>
-<<<<<<< HEAD
                   {selectedOffer && paymentMethod === "upi" && (
                     <div className="flex justify-between text-green-600">
                       <span className="text-sm">Discount (10% UPI)</span>
@@ -832,28 +684,5 @@ export default function CheckoutPage() {
       </div>
       <Footer />
     </>
-=======
-                  <div className="border-t pt-2">
-                    <div className="flex justify-between text-xl">
-                      <span className="font-black">Total</span>
-                      <span className="font-black text-accent">${calculateTotal().toFixed(2)}</span>
-                    </div>
-                  </div>
-                </div>
-                <Button
-                  size="lg"
-                  className="w-full font-bold uppercase text-base h-14"
-                  onClick={handleCheckout}
-                  disabled={processing}
-                >
-                  {processing ? "Processing..." : "Complete Order"}
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </div>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   )
 }

@@ -6,16 +6,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Label } from "@/components/ui/label"
-<<<<<<< HEAD
 import { useState, useEffect } from "react"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/hooks/use-toast"
-=======
-import { useState } from "react"
-import { createClient } from "@/lib/supabase/client"
-import { useRouter } from "next/navigation"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import Link from "next/link"
 
 interface ApplyDesignFormProps {
@@ -27,7 +21,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
   const [selectedProduct, setSelectedProduct] = useState("")
   const [isApplying, setIsApplying] = useState(false)
   const [error, setError] = useState<string | null>(null)
-<<<<<<< HEAD
   const [customizationAmount, setCustomizationAmount] = useState<number | null>(null)
   const router = useRouter()
   const { toast } = useToast()
@@ -58,9 +51,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
       }
     }
   }, [selectedProduct, userProducts, designId])
-=======
-  const router = useRouter()
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
   const handleApply = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -69,7 +59,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
 
     try {
       const supabase = createClient()
-<<<<<<< HEAD
       const {
         data: { user },
       } = await supabase.auth.getUser()
@@ -95,9 +84,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
       }
 
       // Link design to product
-=======
-
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       const { error: insertError } = await supabase.from("product_designs").insert({
         product_id: selectedProduct,
         design_id: designId,
@@ -114,7 +100,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
 
       if (updateError) throw updateError
 
-<<<<<<< HEAD
       // If payment is required, create an order
       if (amountToCharge > 0) {
         const orderNumber = `CUST-${Date.now()}-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
@@ -159,11 +144,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
         description: errorMessage,
         variant: "destructive",
       })
-=======
-      router.push("/dashboard/products")
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to apply design")
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
     } finally {
       setIsApplying(false)
     }
@@ -207,7 +187,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
                 ))}
               </SelectContent>
             </Select>
-<<<<<<< HEAD
             {customizationAmount && customizationAmount > 0 && (
               <div className="mt-2 p-3 bg-blue-50 border border-blue-200 rounded-lg">
                 <p className="text-sm font-bold text-blue-900">
@@ -218,8 +197,6 @@ export function ApplyDesignForm({ designId, userProducts }: ApplyDesignFormProps
                 </p>
               </div>
             )}
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           </div>
 
           {error && (

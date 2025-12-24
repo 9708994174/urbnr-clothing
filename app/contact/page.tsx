@@ -7,15 +7,9 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background w-full overflow-x-hidden">
       <ShopHeader />
-<<<<<<< HEAD
       <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
 
       <main className="w-full pb-8 md:pb-12">
-=======
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <main className="w-full ml-2">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         {/* Hero Section */}
         <section className="w-full py-16 md:py-24 bg-black text-white">
           <div className="w-full px-4 md:px-10 lg:px-16">

@@ -6,13 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { createClient } from "@/lib/supabase/client"
 import { useRouter } from "next/navigation"
-<<<<<<< HEAD
 import { CheckCircle, CreditCard } from "lucide-react"
 import { Footer } from "@/components/footer"
-=======
-import Link from "next/link"
-import { ArrowLeft, CheckCircle, CreditCard } from "lucide-react"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 export default function CheckoutPage({ params }: { params: Promise<{ id: string }> }) {
   const [orderId, setOrderId] = useState<string | null>(null)
@@ -20,7 +15,6 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
   const [product, setProduct] = useState<any>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isProcessing, setIsProcessing] = useState(false)
-<<<<<<< HEAD
   const [paymentMethod, setPaymentMethod] = useState<"card" | "upi" | "cod">("card")
   const router = useRouter()
 
@@ -48,10 +42,6 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
     },
   ]
 
-=======
-  const router = useRouter()
-
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   useEffect(() => {
     params.then((p) => setOrderId(p.id))
   }, [params])
@@ -75,12 +65,8 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
         .select(
           `
           *,
-<<<<<<< HEAD
           products:product_id(*),
           catalog_products:catalog_product_id(*)
-=======
-          products(*)
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         `,
         )
         .eq("id", orderId)
@@ -89,15 +75,11 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
 
       if (orderData) {
         setOrder(orderData)
-<<<<<<< HEAD
         // Handle both product types
         const productData = orderData.products || orderData.catalog_products
         if (productData) {
           setProduct(Array.isArray(productData) ? productData[0] : productData)
         }
-=======
-        setProduct(orderData.products)
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
         if (orderData.payment_status === "paid") {
           router.push("/dashboard/orders")
@@ -114,7 +96,6 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
     setIsProcessing(true)
 
     try {
-<<<<<<< HEAD
       const supabase = createClient()
       const {
         data: { user },
@@ -176,30 +157,6 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
     } catch (error) {
       console.error("Payment error:", error)
       alert(error instanceof Error ? error.message : "Payment failed. Please try again.")
-=======
-      // Simulate payment processing
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-
-      const supabase = createClient()
-
-      const { error } = await supabase
-        .from("orders")
-        .update({
-          payment_status: "paid",
-          payment_intent_id: `pi_${Date.now()}`,
-        })
-        .eq("id", orderId)
-
-      if (error) throw error
-
-      // Update product status to completed
-      await supabase.from("products").update({ status: "completed" }).eq("id", product.id)
-
-      router.push("/dashboard/orders")
-    } catch (error) {
-      alert("Payment failed. Please try again.")
-    } finally {
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       setIsProcessing(false)
     }
   }
@@ -225,7 +182,6 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
   }
 
   return (
-<<<<<<< HEAD
     <>
       <DashboardLayout>
         <div className="space-y-8 sm:space-y-10 w-full pb-8 md:pb-12">
@@ -387,96 +343,5 @@ export default function CheckoutPage({ params }: { params: Promise<{ id: string 
       </DashboardLayout>
       <Footer />
     </>
-=======
-    <DashboardLayout>
-      <div className="max-w-2xl mx-auto space-y-8">
-        <Button variant="ghost" asChild>
-          <Link href="/dashboard/orders">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Orders
-          </Link>
-        </Button>
-
-        <div>
-          <h1 className="text-3xl font-bold">Checkout</h1>
-          <p className="text-muted-foreground mt-2">Complete your payment to start production</p>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {product?.image_url && (
-                <img
-                  src={product.image_url || "/placeholder.svg"}
-                  alt={product.product_name}
-                  className="w-full h-48 object-cover rounded-lg"
-                />
-              )}
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Product</span>
-                  <span className="font-semibold">{product?.product_name}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Type</span>
-                  <span className="font-semibold capitalize">{product?.product_type}</span>
-                </div>
-                <div className="flex justify-between text-lg font-bold pt-3 border-t">
-                  <span>Total</span>
-                  <span>${order.amount?.toFixed(2)}</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Payment Method</CardTitle>
-                <CardDescription>Demo payment for testing</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="p-4 border rounded-lg bg-muted/30">
-                  <div className="flex items-center gap-3 mb-3">
-                    <CreditCard className="h-5 w-5 text-muted-foreground" />
-                    <span className="font-medium">Test Payment</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    This is a demo payment. In production, this would integrate with Stripe for secure payment
-                    processing.
-                  </p>
-                </div>
-
-                <Button onClick={handlePayment} disabled={isProcessing} className="w-full" size="lg">
-                  {isProcessing ? "Processing Payment..." : `Pay $${order.amount?.toFixed(2)}`}
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-muted/50">
-              <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <CheckCircle className="h-5 w-5 text-primary" />
-                  What Happens Next
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-2 text-sm text-muted-foreground">
-                <p>After successful payment:</p>
-                <ul className="list-disc list-inside space-y-1 ml-2">
-                  <li>Your order will be confirmed immediately</li>
-                  <li>Production will begin within 24 hours</li>
-                  <li>You&apos;ll receive tracking information via email</li>
-                  <li>Estimated delivery: 7-10 business days</li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </div>
-    </DashboardLayout>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   )
 }

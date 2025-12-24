@@ -5,15 +5,11 @@ import type React from "react"
 import { useEffect, useMemo, useState } from "react"
 import { ShopHeader } from "@/components/shop-header"
 import { Footer } from "@/components/footer"
-<<<<<<< HEAD
 import { MobilePageHeader } from "@/components/mobile-page-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-<<<<<<< HEAD
 import { User, Package, Heart, Settings, LogOut, Loader2, Sparkles, ShieldCheck, Truck, Calendar, X, RefreshCw, PackageX, Eye } from "lucide-react"
 import { getProfile, updateProfile, getOrders } from "@/lib/actions/profile-actions"
 import { signOut } from "@/lib/actions/auth-actions"
@@ -26,26 +22,15 @@ import { Badge } from "@/components/ui/badge"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogDescription } from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-=======
-import { User, Package, Heart, Settings, LogOut, Loader2, Sparkles, ShieldCheck } from "lucide-react"
-import { getProfile, updateProfile, getOrders } from "@/lib/actions/profile-actions"
-import { signOut } from "@/lib/actions/auth-actions"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { useToast } from "@/hooks/use-toast"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 export default function AccountPage() {
   const [profile, setProfile] = useState<any>(null)
   const [orders, setOrders] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
-<<<<<<< HEAD
   const [cancellingOrderId, setCancellingOrderId] = useState<string | null>(null)
   const [cancelReason, setCancelReason] = useState("")
   const [cancelDialogOpen, setCancelDialogOpen] = useState(false)
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   const [formData, setFormData] = useState({
     full_name: "",
     phone: "",
@@ -55,18 +40,13 @@ export default function AccountPage() {
     zip_code: "",
   })
   const router = useRouter()
-<<<<<<< HEAD
   const searchParams = useSearchParams()
   const { toast } = useToast()
   const defaultTab = searchParams.get("tab") || "profile"
-=======
-  const { toast } = useToast()
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
   const stats = useMemo(() => {
     const orderCount = orders.length
     const paidOrders = orders.filter((o) => o.payment_status === "paid").length
-<<<<<<< HEAD
     const totalSpent = orders
       .filter((o) => o.payment_status === "paid")
       .reduce((sum, o) => sum + (o.amount || 0), 0)
@@ -74,18 +54,12 @@ export default function AccountPage() {
       { label: "Total Orders", value: orderCount.toString() },
       { label: "Completed", value: paidOrders.toString() },
       { label: "Total Spent", value: `₹${totalSpent.toFixed(0)}` },
-=======
-    return [
-      { label: "Orders", value: orderCount.toString() },
-      { label: "Paid", value: paidOrders.toString() },
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       { label: "Wishlist", value: "—", href: "/wishlist" },
     ]
   }, [orders])
 
   useEffect(() => {
     loadData()
-<<<<<<< HEAD
     
     // Check if we need to redirect to a specific order
     const orderId = searchParams.get("order")
@@ -95,9 +69,6 @@ export default function AccountPage() {
       }, 500)
     }
   }, [searchParams, router])
-=======
-  }, [])
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
   const loadData = async () => {
     const profileResult = await getProfile()
@@ -149,7 +120,6 @@ export default function AccountPage() {
     router.push("/")
   }
 
-<<<<<<< HEAD
   const handleCancelOrder = async (orderId: string) => {
     if (!cancelReason.trim()) {
       toast({
@@ -202,17 +172,11 @@ export default function AccountPage() {
     }
   }
 
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   if (loading) {
     return (
       <div className="min-h-screen w-full overflow-x-hidden">
         <ShopHeader />
-<<<<<<< HEAD
         <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
-=======
-        <div className="h-16"></div> {/* Spacer for fixed header */}
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         <div className="flex items-center justify-center h-[60vh]">
           <Loader2 className="h-12 w-12 animate-spin" />
         </div>
@@ -223,16 +187,10 @@ export default function AccountPage() {
   return (
     <div className="min-h-screen bg-gray-50 w-full overflow-x-hidden">
       <ShopHeader />
-<<<<<<< HEAD
       <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
       <MobilePageHeader title="Account" backHref="/" />
 
       <main className="w-full px-4 md:px-10 lg:px-16 py-6 md:py-10 pt-20 lg:pt-6 pb-8 md:pb-12">
-=======
-      <div className="h-16"></div> {/* Spacer for fixed header */}
-
-      <main className="w-full px-4 md:px-10 lg:px-16 py-10 ml-2">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         {/* Hero */}
         <div className="bg-white border border-black/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 shadow-sm">
           <div className="space-y-2">
@@ -255,11 +213,7 @@ export default function AccountPage() {
         </div>
 
         {/* Stats + shortcuts */}
-<<<<<<< HEAD
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-=======
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-8">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           {stats.map((item) => (
             <Link key={item.label} href={item.href || "#"} className={!item.href ? "pointer-events-none" : ""}>
               <Card className="border border-black/10 hover:border-black transition">
@@ -281,7 +235,6 @@ export default function AccountPage() {
           </Card>
         </div>
 
-<<<<<<< HEAD
         <Tabs defaultValue={defaultTab} className="space-y-6 mt-10">
           <TabsList className="grid w-full grid-cols-2 md:flex md:w-auto bg-white border border-black/10 rounded-lg p-2.5 md:p-1 gap-2.5 md:gap-1 h-auto">
             <TabsTrigger value="profile" className="uppercase font-bold py-3.5 md:py-2 px-3 md:px-3 text-xs md:text-sm whitespace-nowrap h-auto min-h-[48px] md:min-h-0 flex items-center justify-center">
@@ -299,25 +252,6 @@ export default function AccountPage() {
             <TabsTrigger value="settings" className="uppercase font-bold py-3.5 md:py-2 px-3 md:px-3 text-xs md:text-sm whitespace-nowrap h-auto min-h-[48px] md:min-h-0 flex items-center justify-center">
               <Settings className="mr-1.5 md:mr-2 h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
               <span>Settings</span>
-=======
-        <Tabs defaultValue="profile" className="space-y-6 mt-10">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:w-auto lg:inline-grid bg-white border border-black/10">
-            <TabsTrigger value="profile" className="uppercase font-bold">
-              <User className="mr-2 h-4 w-4" />
-              Profile
-            </TabsTrigger>
-            <TabsTrigger value="orders" className="uppercase font-bold">
-              <Package className="mr-2 h-4 w-4" />
-              Orders
-            </TabsTrigger>
-            <TabsTrigger value="wishlist" className="uppercase font-bold">
-              <Heart className="mr-2 h-4 w-4" />
-              Wishlist
-            </TabsTrigger>
-            <TabsTrigger value="settings" className="uppercase font-bold">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
             </TabsTrigger>
           </TabsList>
 
@@ -400,7 +334,6 @@ export default function AccountPage() {
           </TabsContent>
 
           <TabsContent value="orders">
-<<<<<<< HEAD
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div>
@@ -647,48 +580,6 @@ export default function AccountPage() {
                 </div>
               )}
             </div>
-=======
-            <Card className="border border-black/10">
-              <CardHeader>
-                <CardTitle className="uppercase font-black">Order History</CardTitle>
-              </CardHeader>
-              <CardContent>
-                {orders.length === 0 ? (
-                  <div className="text-center py-12">
-                    <Package className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-600 font-medium">No orders yet</p>
-                    <Link href="/shop">
-                      <Button className="mt-4 font-bold uppercase">Start Shopping</Button>
-                    </Link>
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    {orders.map((order) => (
-                      <div key={order.id} className="border rounded-lg p-4 flex gap-4">
-                        <img
-                          src={order.product?.image_url || "/placeholder.svg"}
-                          alt={order.product?.name}
-                          className="w-20 h-20 object-cover rounded"
-                        />
-                        <div className="flex-1">
-                          <h3 className="font-bold">{order.product?.name}</h3>
-                          <p className="text-sm text-gray-600">
-                            Order #{order.order_number} • {order.size} • {order.color}
-                          </p>
-                          <p className="text-sm text-gray-600">
-                            Qty: {order.quantity} • ₹{order.amount?.toFixed(2)}
-                          </p>
-                          <span className="inline-block mt-2 px-3 py-1 bg-green-100 text-green-800 text-xs font-bold rounded-full uppercase">
-                            {order.payment_status}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </CardContent>
-            </Card>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           </TabsContent>
 
           <TabsContent value="wishlist">
@@ -709,7 +600,6 @@ export default function AccountPage() {
           </TabsContent>
 
           <TabsContent value="settings">
-<<<<<<< HEAD
             <div className="space-y-6">
               <Card className="border-2 border-black/10">
                 <CardHeader>
@@ -773,29 +663,6 @@ export default function AccountPage() {
                 </CardContent>
               </Card>
             </div>
-=======
-            <Card className="border border-black/10">
-              <CardHeader>
-                <CardTitle className="uppercase font-black">Account Settings</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <h3 className="font-bold mb-2">Notifications</h3>
-                  <p className="text-sm text-gray-600 mb-4">Manage your email and push notification preferences</p>
-                  <Button variant="outline" className="font-bold uppercase bg-transparent">
-                    Configure Notifications
-                  </Button>
-                </div>
-                <div className="border-t pt-4">
-                  <h3 className="font-bold mb-2 text-red-600">Danger Zone</h3>
-                  <p className="text-sm text-gray-600 mb-4">Permanently delete your account and all associated data</p>
-                  <Button variant="destructive" className="font-bold uppercase">
-                    Delete Account
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           </TabsContent>
         </Tabs>
       </main>

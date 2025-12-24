@@ -14,10 +14,7 @@ import Link from "next/link"
 import { ArrowLeft, Package, CheckCircle, XCircle, Clock, AlertCircle, ShieldCheck } from "lucide-react"
 import { ShopHeader } from "@/components/shop-header"
 import { Footer } from "@/components/footer"
-<<<<<<< HEAD
 import { MobilePageHeader } from "@/components/mobile-page-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { approveProduct, rejectProduct, updateProductStatus } from "@/lib/actions/admin-actions"
 import { useToast } from "@/hooks/use-toast"
 
@@ -29,10 +26,7 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
   const [status, setStatus] = useState("")
   const [notes, setNotes] = useState("")
   const [price, setPrice] = useState("")
-<<<<<<< HEAD
   const [customizationAmount, setCustomizationAmount] = useState("")
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
   const router = useRouter()
@@ -77,11 +71,8 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
         setProduct(productData)
         setUser(productData.profiles)
         setStatus(productData.status)
-<<<<<<< HEAD
         setPrice(productData.price?.toString() || "")
         setCustomizationAmount(productData.customization_amount?.toString() || "")
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
         const { data: designData } = await supabase
           .from("product_designs")
@@ -106,6 +97,15 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
   }, [productId, router])
 
   const handleApprove = async () => {
+    if (!productId) {
+      toast({
+        title: "Error",
+        description: "Product ID is missing",
+        variant: "destructive",
+      })
+      return
+    }
+
     if (!price || parseFloat(price) <= 0) {
       toast({
         title: "Price Required",
@@ -117,16 +117,12 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
 
     setIsSaving(true)
     try {
-<<<<<<< HEAD
       const result = await approveProduct(
         productId,
         parseFloat(price),
         notes,
         customizationAmount ? parseFloat(customizationAmount) : undefined
       )
-=======
-      const result = await approveProduct(productId, parseFloat(price), notes)
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       if (result.success) {
         toast({
           title: "Product Approved",
@@ -153,6 +149,15 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
   }
 
   const handleReject = async () => {
+    if (!productId) {
+      toast({
+        title: "Error",
+        description: "Product ID is missing",
+        variant: "destructive",
+      })
+      return
+    }
+
     if (!notes || notes.trim().length === 0) {
       toast({
         title: "Notes Required",
@@ -191,6 +196,15 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
   }
 
   const handleUpdateStatus = async () => {
+    if (!productId) {
+      toast({
+        title: "Error",
+        description: "Product ID is missing",
+        variant: "destructive",
+      })
+      return
+    }
+
     setIsSaving(true)
     try {
       const result = await updateProductStatus(productId, status, notes)
@@ -224,11 +238,7 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
     return (
       <>
         <ShopHeader />
-<<<<<<< HEAD
-        <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
-=======
-        <div className="h-16"></div>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
+        <div className="hidden lg:block h-16"></div>
         <div className="min-h-screen bg-background flex items-center justify-center">
           <p className="text-muted-foreground">Loading...</p>
         </div>
@@ -240,11 +250,7 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
     return (
       <>
         <ShopHeader />
-<<<<<<< HEAD
-        <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
-=======
-        <div className="h-16"></div>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
+        <div className="hidden lg:block h-16"></div>
         <div className="min-h-screen bg-background flex items-center justify-center">
           <p className="text-muted-foreground">Product not found</p>
         </div>
@@ -274,8 +280,7 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
     <>
       <ShopHeader />
       <div className="min-h-screen bg-background w-full overflow-x-hidden">
-<<<<<<< HEAD
-        <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
+        <div className="hidden lg:block h-16"></div>
         <MobilePageHeader title="Product Details" backHref="/admin/products" />
         <header className="border-b bg-black text-white w-full pt-16 lg:pt-0">
           <div className="w-full px-4 md:px-10 lg:px-16 py-8 md:py-10">
@@ -293,33 +298,14 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
                 </div>
               </div>
               <Badge className={`${statusInfo.color} text-white h-10 w-full sm:w-auto flex items-center justify-center text-xs sm:text-sm font-black uppercase px-4 border-2`}>
-=======
-        <div className="h-16"></div> {/* Spacer for fixed header */}
-        <div className="bg-card border-b w-full ml-2">
-          <div className="w-full px-4 md:px-10 lg:px-16 py-4">
-            <div className="flex items-center justify-between">
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/admin/products">
-                  <ArrowLeft className="h-4 w-4 mr-2" />
-                  Back to Products
-                </Link>
-              </Button>
-              <Badge className={`${statusInfo.color} text-white px-4 py-2`}>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                 <StatusIcon className="h-4 w-4 mr-2" />
                 {statusInfo.text}
               </Badge>
             </div>
           </div>
-<<<<<<< HEAD
         </header>
 
         <main className="w-full px-4 md:px-10 lg:px-16 py-8 pb-8 md:pb-12">
-=======
-        </div>
-
-        <main className="w-full px-4 md:px-10 lg:px-16 py-8 ml-2">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <div className="grid lg:grid-cols-2 gap-8">
             <div className="space-y-6">
               <Card>
@@ -469,11 +455,7 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
                   </div>
 
                   <div className="space-y-2">
-<<<<<<< HEAD
                     <Label htmlFor="price">Price (₹)</Label>
-=======
-                    <Label htmlFor="price">Price (USD)</Label>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                     <Input
                       id="price"
                       type="number"
@@ -486,7 +468,6 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
                   </div>
 
                   <div className="space-y-2">
-<<<<<<< HEAD
                     <Label htmlFor="customizationAmount">Customization Amount (₹)</Label>
                     <Input
                       id="customizationAmount"
@@ -500,8 +481,6 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
                   </div>
 
                   <div className="space-y-2">
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                     <Label htmlFor="notes">Notes / Feedback</Label>
                     <Textarea
                       id="notes"
@@ -518,34 +497,19 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
                       <Button
                         onClick={handleApprove}
                         disabled={isSaving || status === "approved" || !price}
-<<<<<<< HEAD
                         variant="outline"
                         className="w-full bg-green-600 hover:bg-green-700 text-white border-2 border-green-600 hover:border-green-700 font-black uppercase text-xs sm:text-sm h-10"
                       >
                         <CheckCircle className="mr-2 h-4 w-4" />
-=======
-                        className="w-full bg-green-600 hover:bg-green-700 text-white font-bold h-12"
-                        size="lg"
-                      >
-                        <CheckCircle className="mr-2 h-5 w-5" />
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         Approve
                       </Button>
                       <Button
                         onClick={handleReject}
                         disabled={isSaving || status === "rejected" || !notes}
-<<<<<<< HEAD
                         variant="outline"
                         className="w-full bg-red-600 hover:bg-red-700 text-white border-2 border-red-600 hover:border-red-700 font-black uppercase text-xs sm:text-sm h-10"
                       >
                         <XCircle className="mr-2 h-4 w-4" />
-=======
-                        variant="destructive"
-                        className="w-full font-bold h-12"
-                        size="lg"
-                      >
-                        <XCircle className="mr-2 h-5 w-5" />
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         Reject
                       </Button>
                     </div>
@@ -554,11 +518,7 @@ export default function AdminProductDetailPage({ params }: { params: Promise<{ i
                       onClick={handleUpdateStatus}
                       disabled={isSaving}
                       variant="outline"
-<<<<<<< HEAD
                       className="w-full border-2 border-black hover:bg-black hover:text-white font-black uppercase text-xs sm:text-sm h-10"
-=======
-                      className="w-full bg-transparent"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                     >
                       {isSaving ? "Updating..." : "Update Status Only"}
                     </Button>

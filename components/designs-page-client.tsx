@@ -4,10 +4,7 @@ import { useState, useEffect } from "react"
 import { createClient } from "@/lib/supabase/client"
 import { ShopHeader } from "@/components/shop-header"
 import { Footer } from "@/components/footer"
-<<<<<<< HEAD
 import { MobilePageHeader } from "@/components/mobile-page-header"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Link from "next/link"
@@ -103,14 +100,9 @@ export function DesignsPageClient({ initialDesigns }: { initialDesigns: Design[]
     return (
       <div className="min-h-screen flex flex-col bg-white w-full overflow-x-hidden">
         <ShopHeader />
-<<<<<<< HEAD
         <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
         <MobilePageHeader title="Templates" backHref="/" />
         <main className="flex-1 flex items-center justify-center w-full px-4 pb-16 lg:pb-0 pt-16 lg:pt-0">
-=======
-        <div className="h-16"></div>
-        <main className="flex-1 flex items-center justify-center w-full px-4">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <div className="text-center">
             <h2 className="text-2xl font-black uppercase mb-4">Login Required</h2>
             <p className="text-black/60 mb-4">Please login to access the designs page</p>
@@ -129,7 +121,6 @@ export function DesignsPageClient({ initialDesigns }: { initialDesigns: Design[]
   return (
     <div className="min-h-screen flex flex-col bg-white w-full overflow-x-hidden">
       <ShopHeader />
-<<<<<<< HEAD
       <div className="hidden lg:block h-16"></div> {/* Spacer for fixed header on desktop only */}
       <MobilePageHeader title="Templates" backHref="/" />
 
@@ -176,55 +167,6 @@ export function DesignsPageClient({ initialDesigns }: { initialDesigns: Design[]
                   </Link>
                 </Button>
               </div>
-=======
-      <div className="h-16"></div>
-
-      <main className="flex-1 w-full">
-
-        <section className="py-14 w-full ml-2">
-          <div className="w-full px-4 md:px-8 lg:px-12">
-
-
-            {/* HEADER */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-10">
-              <div>
-                <h2 className="text-3xl font-black uppercase">Templates</h2>
-                <p className="text-sm uppercase tracking-widest text-black/50">
-                  Curated Collection
-                </p>
-              </div>
-            {/* Quick Navigation */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              <Button asChild variant="outline" size="sm" className="border-black font-bold uppercase text-xs">
-                <Link href="/dashboard">
-                  <LayoutDashboard className="mr-1.5 h-3.5 w-3.5" />
-                  Dashboard
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="sm" className="border-black font-bold uppercase text-xs">
-                <Link href="/dashboard/orders">
-                  <FileText className="mr-1.5 h-3.5 w-3.5" />
-                  Orders
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="sm" className="border-black font-bold uppercase text-xs">
-                <Link href="/admin/products">
-                  <ShieldCheck className="mr-1.5 h-3.5 w-3.5" />
-                  Admin
-                </Link>
-              </Button>
-            </div>
-
-              <Button
-                asChild
-                className="h-11 px-6 bg-black text-white font-black uppercase hover:bg-black/90"
-              >
-                <Link href="/designs/custom">
-                  <Palette className="mr-2 h-4 w-4" />
-                  Create Custom Design
-                </Link>
-              </Button>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
             </div>
 
             {/* TABS */}

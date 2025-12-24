@@ -19,10 +19,6 @@ export function ShopHeader() {
   const [searchQuery, setSearchQuery] = useState("")
   const [authOpen, setAuthOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-<<<<<<< HEAD
-  const [mobileSearchOpen, setMobileSearchOpen] = useState(false)
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   const [mounted, setMounted] = useState(false)
   const router = useRouter()
 
@@ -34,11 +30,7 @@ export function ShopHeader() {
 
     const supabase = createClient()
 
-<<<<<<< HEAD
     supabase.auth.getUser().then(({ data: { user } }) => {
-=======
-    supabase.auth.getUser().then(({ data: { user } }: { data: { user: SupabaseUser | null } }) => {
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       setUser(user)
       if (user) loadCart(user.id)
     })
@@ -56,17 +48,10 @@ export function ShopHeader() {
         .from("cart_items")
         .select("quantity")
         .eq("user_id", userId)
-<<<<<<< HEAD
         .then(({ data }) => {
           if (data) {
             setCartCount(
               data.reduce((s, i) => s + (i.quantity || 0), 0)
-=======
-        .then(({ data }: { data: { quantity: number | null }[] | null }) => {
-          if (data) {
-            setCartCount(
-              data.reduce((s: number, i: { quantity: number | null }) => s + (i.quantity || 0), 0)
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
             )
           }
         })
@@ -86,8 +71,6 @@ export function ShopHeader() {
     setSearchQuery("")
   }
 
-<<<<<<< HEAD
-  /* 🔹 ADDED: Sign Out handler (nothing else touched) */
   const handleSignOut = async () => {
     const supabase = createClient()
     await supabase.auth.signOut()
@@ -108,23 +91,6 @@ export function ShopHeader() {
             <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className={`${iconHoverClass} p-0`}>
-=======
-  return (
-    <>
-      <header className="fixed top-0 left-0 right-0 z-50 w-full bg-white">
-        
-        {/* Main Header */}
-        <div className="w-full h-16 flex items-center justify-between border-b border-black/10 relative px-3 sm:px-4">
-          {/* LEFT - Hamburger Menu (Extreme Left) */}
-          <div className="flex items-center pl-2 sm:pl-6 md:pl-10 lg:pl-16">
-            <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={`${iconHoverClass} p-0`}
-                >
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   <div className="flex flex-col gap-1">
                     <div className="w-5 h-0.5 bg-black"></div>
                     <div className="w-5 h-0.5 bg-[#FFB366]"></div>
@@ -133,15 +99,9 @@ export function ShopHeader() {
                 </Button>
               </SheetTrigger>
 
-<<<<<<< HEAD
-              {/* 🔹 ONLY CHANGE HERE: added flex flex-col */}
               <SheetContent side="left" className="w-full sm:w-96 p-0 flex flex-col">
                 
                 {/* Header */}
-=======
-              <SheetContent side="left" className="w-full sm:w-96 p-0">
-                {/* Header with Close Button and Title */}
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                 <div className="flex items-center justify-between px-6 py-4 border-b border-black/10">
                   <Button
                     variant="ghost"
@@ -152,78 +112,34 @@ export function ShopHeader() {
                     <X className="h-5 w-5" />
                   </Button>
                   <h2 className="text-xl font-black uppercase">CATEGORIES</h2>
-<<<<<<< HEAD
                   <div className="w-8"></div>
-=======
-                  <div className="w-8"></div> {/* Spacer for centering */}
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                 </div>
 
                 {/* Filter Buttons */}
                 <div className="px-6 py-4 border-b border-black/10 overflow-x-auto">
                   <div className="flex items-center gap-3 pb-2">
                     <Link href="/shop" onClick={() => setMenuOpen(false)}>
-<<<<<<< HEAD
                       <Button className="bg-black text-white font-black uppercase text-xs whitespace-nowrap">
-=======
-                      <Button
-                        variant="default"
-                        size="sm"
-                        className="bg-black text-white font-black uppercase text-xs whitespace-nowrap hover:bg-black/90"
-                      >
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         ALL
                       </Button>
                     </Link>
                     <Link href="/shop?category=accessories" onClick={() => setMenuOpen(false)}>
-<<<<<<< HEAD
                       <Button variant="outline" className="border-black font-black uppercase text-xs whitespace-nowrap">
-=======
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-black font-black uppercase text-xs whitespace-nowrap"
-                      >
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         ACCESSORIES
                       </Button>
                     </Link>
                     <Link href="/shop?category=trending" onClick={() => setMenuOpen(false)}>
-<<<<<<< HEAD
                       <Button variant="outline" className="border-black font-black uppercase text-xs whitespace-nowrap">
-=======
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-black font-black uppercase text-xs whitespace-nowrap"
-                      >
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         TRENDING
                       </Button>
                     </Link>
                     <Link href="/shop?category=sale" onClick={() => setMenuOpen(false)}>
-<<<<<<< HEAD
                       <Button variant="outline" className="border-black font-black uppercase text-xs whitespace-nowrap">
-=======
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-black font-black uppercase text-xs whitespace-nowrap"
-                      >
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         SALE
                       </Button>
                     </Link>
                     <Link href="/shop?category=plussize" onClick={() => setMenuOpen(false)}>
-<<<<<<< HEAD
                       <Button variant="outline" className="border-black font-black uppercase text-xs whitespace-nowrap">
-=======
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-black font-black uppercase text-xs whitespace-nowrap"
-                      >
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                         PLUS SIZE
                       </Button>
                     </Link>
@@ -245,38 +161,20 @@ export function ShopHeader() {
                       key={category.name}
                       href={category.href}
                       onClick={() => setMenuOpen(false)}
-<<<<<<< HEAD
                       className="flex items-center gap-4 px-6 py-4 border-b border-black/5 hover:bg-gray-50"
                     >
                       <div className="w-20 h-20 shrink-0 overflow-hidden rounded">
                         <img src={category.image} alt={category.name} className="w-full h-full object-cover" />
-=======
-                      className="flex items-center gap-4 px-6 py-4 border-b border-black/5 hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="w-20 h-20 shrink-0 overflow-hidden rounded">
-                        <img
-                          src={category.image}
-                          alt={category.name}
-                          className="w-full h-full object-cover"
-                        />
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                       </div>
                       <span className="flex-1 text-lg font-black uppercase">{category.name}</span>
                       <ChevronRight className="h-5 w-5 text-black/40 shrink-0" />
                     </Link>
                   ))}
-<<<<<<< HEAD
 
                   <Link
                     href="/designs"
                     onClick={() => setMenuOpen(false)}
                     className="flex items-center gap-4 px-6 py-4 border-b border-black/5 hover:bg-gray-50"
-=======
-                  <Link
-                    href="/designs"
-                    onClick={() => setMenuOpen(false)}
-                    className="flex items-center gap-4 px-6 py-4 border-b border-black/5 hover:bg-gray-50 transition-colors"
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   >
                     <div className="w-20 h-20 shrink-0 bg-red-600 rounded flex items-center justify-center">
                       <span className="text-white font-black text-xs">CUSTOM</span>
@@ -284,7 +182,6 @@ export function ShopHeader() {
                     <span className="flex-1 text-lg font-black uppercase text-red-600">CUSTOMIZE</span>
                     <ChevronRight className="h-5 w-5 text-black/40 shrink-0" />
                   </Link>
-<<<<<<< HEAD
 
                   {user && (
                     <Link
@@ -301,7 +198,7 @@ export function ShopHeader() {
                   )}
                 </nav>
 
-                {/* 🔹 ADDED: Sign Out at bottom (nothing removed) */}
+                {/* Sign Out at bottom */}
                 {user && (
                   <div className="mt-auto border-t border-black/10 px-6 py-4">
                     <Button
@@ -313,9 +210,6 @@ export function ShopHeader() {
                     </Button>
                   </div>
                 )}
-=======
-                </nav>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               </SheetContent>
             </Sheet>
           </div>
@@ -323,23 +217,14 @@ export function ShopHeader() {
           {/* CENTER - Logo */}
           <Link
             href="/"
-<<<<<<< HEAD
             className="flex items-center gap-2 flex-shrink-0 absolute left-1/2 -translate-x-1/2"
           >
             <UrbnrLogo size={72} className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8" />
             <span className="text-sm sm:text-base md:text-xl font-black uppercase tracking-widest hidden sm:inline">
-=======
-            className="flex items-center gap-1.5 sm:gap-2 absolute left-1/2 transform -translate-x-1/2 max-w-[120px] sm:max-w-none"
-            aria-label="URBNR home"
-          >
-            <UrbnrLogo size={72} className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 flex-shrink-0" />
-            <span className="text-sm sm:text-base md:text-xl font-black uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.25em] text-black truncate">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               URBNR
             </span>
           </Link>
 
-<<<<<<< HEAD
           {/* RIGHT - Search Box and Icons (Desktop only) */}
           <div className="hidden lg:flex items-center gap-4 flex-shrink-0">
             {/* Search Box */}
@@ -385,59 +270,10 @@ export function ShopHeader() {
                 </Button>
               </Link>
             </div>
-=======
-          {/* RIGHT - Search, User, Wishlist, Cart (Extreme Right) */}
-          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 pr-2 sm:pr-3 md:pr-6 lg:pr-10 xl:px-16">
-            {/* SEARCH */}
-            <form onSubmit={handleSearch} className="hidden md:flex items-center">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <Input
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder='Search "T-Shirt"'
-                  className="w-64 h-9 pl-9 pr-4 border border-black focus-visible:ring-0 focus-visible:ring-offset-0 text-sm"
-                />
-              </div>
-            </form>
-
-            {/* ACCOUNT */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className={iconHoverClass}
-              onClick={() => {
-                if (user) router.push("/account")
-                else setAuthOpen(true)
-              }}
-            >
-              <User className="h-6 w-6" />
-            </Button>
-
-            {/* WISHLIST */}
-            <Link href="/wishlist">
-              <Button variant="ghost" size="icon" className={iconHoverClass}>
-                <Heart className="h-6 w-6" />
-              </Button>
-            </Link>
-
-            {/* CART */}
-            <Link href="/cart">
-              <Button variant="ghost" size="icon" className={`relative ${iconHoverClass}`}>
-                <ShoppingBag className="h-6 w-6" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-black text-white text-xs font-bold h-5 w-5 rounded-full flex items-center justify-center z-10">
-                    {cartCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           </div>
         </div>
       </header>
 
-<<<<<<< HEAD
       {/* Mobile Bottom Navigation Bar (Fixed at bottom on mobile only) */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 w-full bg-white border-t-2 border-black/20 shadow-[0_-4px_12px_rgba(0,0,0,0.1)]">
         <div className="w-full h-16 flex items-center justify-around px-1">
@@ -601,9 +437,6 @@ export function ShopHeader() {
         </div>
       </nav>
 
-=======
-      {/* AUTH MODAL */}
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       <AuthModal
         open={authOpen}
         onOpenChange={setAuthOpen}

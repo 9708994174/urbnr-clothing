@@ -10,3 +10,4 @@ WHERE is_prebuilt = true AND template_rate IS NULL;
 
 
 
+

@@ -101,11 +101,7 @@ export default function ProfilePage() {
 
   if (isLoading) {
     return (
-<<<<<<< HEAD
       <DashboardLayout title="Profile" backHref="/dashboard">
-=======
-      <DashboardLayout>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         <div className="flex items-center justify-center min-h-[300px] font-black uppercase">
           Loading…
         </div>
@@ -114,11 +110,7 @@ export default function ProfilePage() {
   }
 
   return (
-<<<<<<< HEAD
     <DashboardLayout title="Profile" backHref="/dashboard">
-=======
-    <DashboardLayout>
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       <div className="max-w-6xl mx-auto space-y-10">
 
         {/* HEADER */}
@@ -136,11 +128,7 @@ export default function ProfilePage() {
           {[
             { label: "Total Orders", value: orderStats.total },
             { label: "Completed", value: orderStats.paid },
-<<<<<<< HEAD
             { label: "Total Spent", value: `₹${orderStats.totalSpent.toFixed(2)}` },
-=======
-            { label: "Total Spent", value: `$${orderStats.totalSpent.toFixed(2)}` },
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           ].map((s, i) => (
             <div key={i} className="border border-black/20 p-6 bg-white">
               <p className="text-xs uppercase tracking-widest font-black text-black/60">

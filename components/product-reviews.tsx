@@ -50,11 +50,7 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
         // Try to load reviews - using manual join to avoid relationship cache issues
         const { data: reviewsData, error: reviewsError } = await supabase
           .from("product_reviews")
-<<<<<<< HEAD
           .select("id, rating, comment, created_at, user_id, product_fit, product_quality")
-=======
-          .select("id, rating, comment, created_at, user_id")
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           .eq("product_id", productId)
           .order("created_at", { ascending: false })
 
@@ -108,7 +104,6 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
     }
 
     load()
-<<<<<<< HEAD
 
     // Set up real-time subscription for reviews
     const channel = supabase
@@ -132,8 +127,6 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
     return () => {
       supabase.removeChannel(channel)
     }
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   }, [productId])
 
   const averageRating = useMemo(() => {
@@ -234,7 +227,6 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
       }
       
       if (insertedReview) {
-<<<<<<< HEAD
         // Reload all reviews to get latest data including any computed fields
         const { data: updatedReviewsData } = await supabase
           .from("product_reviews")
@@ -273,22 +265,6 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
           }
           setReviews((prev) => [reviewWithProfile, ...prev])
         }
-
-=======
-        // Fetch profile separately and merge
-        const { data: profileData } = await supabase
-          .from("profiles")
-          .select("id, full_name")
-          .eq("id", user.id)
-          .single()
-
-        const reviewWithProfile = {
-          ...insertedReview,
-          profiles: profileData || null,
-        }
-
-        setReviews((prev) => [reviewWithProfile, ...prev])
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
         setRating(0)
         setHoverRating(0)
         setComment("")
@@ -309,7 +285,6 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
     }
   }
 
-<<<<<<< HEAD
   const renderStars = (value: number, size: "sm" | "md" | "lg" = "md") => {
     const sizeClasses = {
       sm: "h-2.5 w-2.5 sm:h-3 sm:w-3",
@@ -322,15 +297,6 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
           <Star
             key={star}
             className={`${sizeClasses[size]} ${
-=======
-  const renderStars = (value: number) => {
-    return (
-      <div className="flex items-center gap-0.5">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Star
-            key={star}
-            className={`h-5 w-5 ${
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               star <= value 
                 ? "text-amber-500 fill-amber-400" 
                 : "text-gray-300"
@@ -340,22 +306,6 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
       </div>
     )
   }
-
-<<<<<<< HEAD
-=======
-  // If table doesn't exist, show a minimal placeholder
-  if (!tableExists && !loading) {
-    return (
-      <Card className="border-black/5 shadow-sm">
-        <CardHeader>
-          <CardTitle className="text-xl font-black uppercase">Customer Reviews</CardTitle>
-          <p className="text-sm text-muted-foreground">Reviews coming soon!</p>
-        </CardHeader>
-      </Card>
-    )
-  }
-
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   return (
     <Card className="border-black/10 shadow-lg bg-white">
       <CardHeader className="border-b border-black/5 pb-6">
@@ -369,34 +319,20 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
             </p>
           </div>
           {averageRating ? (
-<<<<<<< HEAD
             <div className="flex flex-col sm:flex-row items-center sm:items-center gap-3 sm:gap-4 bg-black/5 px-3 sm:px-6 py-4 rounded-lg w-full sm:w-auto overflow-hidden">
               <div className="text-center flex-shrink-0">
                 <span className="text-3xl sm:text-4xl md:text-5xl font-black text-black block leading-none">
-=======
-            <div className="flex items-center gap-4 bg-black/5 px-6 py-4 rounded-lg">
-              <div className="text-center">
-                <span className="text-4xl md:text-5xl font-black text-black block leading-none">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   {averageRating}
                 </span>
                 <span className="text-xs text-muted-foreground uppercase tracking-wider mt-1 block">
                   Average
                 </span>
               </div>
-<<<<<<< HEAD
               <div className="flex flex-col items-center sm:items-start gap-2 min-w-0 flex-1">
                 <div className="flex items-center gap-0.5 justify-center sm:justify-start w-full overflow-hidden">
                   {renderStars(Math.round(Number(averageRating)), "md")}
                 </div>
                 <span className="text-xs sm:text-sm font-bold uppercase text-black/80">
-=======
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-1">
-                  {renderStars(Math.round(Number(averageRating)))}
-                </div>
-                <span className="text-sm font-bold uppercase text-black/80">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
                   {reviews.length} {reviews.length === 1 ? "Review" : "Reviews"}
                 </span>
               </div>
@@ -531,11 +467,7 @@ export function ProductReviews({ productId }: ProductReviewsProps) {
               </div>
               
               <div className="mb-3">
-<<<<<<< HEAD
                 {renderStars(review.rating, "md")}
-=======
-                {renderStars(review.rating)}
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
               </div>
               
               <p className="text-sm text-gray-800 leading-relaxed whitespace-pre-wrap font-medium">

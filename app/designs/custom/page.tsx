@@ -131,11 +131,7 @@ export default function CustomDesignPage() {
     <>
       <DashboardLayout>
         {/* MAIN CONTENT */}
-<<<<<<< HEAD
         <div className="max-w-7xl mx-auto space-y-12 pb-8 md:pb-12">
-=======
-        <div className="max-w-7xl mx-auto space-y-12 pb-24">
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
           {/* HERO (spaced from header) */}
           <div className="bg-black text-white px-8 py-10 mt-10 rounded-2xl">

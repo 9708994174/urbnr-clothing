@@ -78,15 +78,11 @@ export async function getOrders() {
   try {
     const { data: orders, error } = await supabase
       .from("orders")
-<<<<<<< HEAD
       .select(`
         *,
         catalog_products:catalog_product_id(id, name, image_url, description),
         products:product_id(id, product_name, image_url, description, product_type)
       `)
-=======
-      .select("*, product:catalog_products(*)")
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
       .eq("user_id", user.id)
       .order("created_at", { ascending: false })
 

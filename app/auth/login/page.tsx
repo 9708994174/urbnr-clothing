@@ -9,23 +9,16 @@ import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-<<<<<<< HEAD
 import { useToast } from "@/hooks/use-toast"
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
-<<<<<<< HEAD
   const [isOAuthLoading, setIsOAuthLoading] = useState<string | null>(null)
   const router = useRouter()
   const { toast } = useToast()
-=======
-  const router = useRouter()
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,7 +41,6 @@ export default function LoginPage() {
     }
   }
 
-<<<<<<< HEAD
   const handleOAuthLogin = async (provider: "google" | "apple") => {
     setIsOAuthLoading(provider)
     setError(null)
@@ -77,8 +69,6 @@ export default function LoginPage() {
     }
   }
 
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
   return (
     <div className="min-h-screen flex">
       {/* Left Side - Brand Image */}
@@ -142,17 +132,12 @@ export default function LoginPage() {
             <Button
               type="submit"
               className="w-full h-14 bg-black hover:bg-neutral-800 text-white font-black uppercase tracking-wide text-base"
-<<<<<<< HEAD
               disabled={isLoading || isOAuthLoading !== null}
-=======
-              disabled={isLoading}
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
             >
               {isLoading ? "Signing in..." : "Sign In"}
             </Button>
           </form>
 
-<<<<<<< HEAD
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
               <span className="w-full border-t border-gray-300" />
@@ -223,8 +208,6 @@ export default function LoginPage() {
             </Button>
           </div>
 
-=======
->>>>>>> 4a62e5fcd37b589bc3e624e537b2d3fd2921173c
           <div className="text-center">
             <p className="text-neutral-600 font-medium">
               Don&apos;t have an account?{" "}

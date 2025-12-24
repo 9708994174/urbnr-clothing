@@ -42,3 +42,4 @@ SELECT 'Customization amount and notifications table created successfully!' as r
 
 
 
+
