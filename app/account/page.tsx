@@ -1,5 +1,8 @@
 "use client"
 
+// This page requires authentication and cannot be statically generated
+// The layout.tsx handles the dynamic export
+
 import type React from "react"
 
 import { useEffect, useMemo, useState } from "react"

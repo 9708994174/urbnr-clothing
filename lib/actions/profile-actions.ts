@@ -43,39 +43,43 @@ export async function updateProfile(data: {
 }
 
 export async function getProfile() {
-  const supabase = await createClient()
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  if (!user) {
-    return { error: "You must be logged in" }
-  }
-
   try {
+    const supabase = await createClient()
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+
+    if (!user) {
+      return { error: "You must be logged in" }
+    }
+
     const { data: profile, error } = await supabase.from("profiles").select("*").eq("id", user.id).single()
 
     if (error && error.code !== "PGRST116") throw error
 
     return { success: true, profile: profile || { id: user.id, email: user.email } }
   } catch (error: any) {
-    return { error: error.message }
+    // Handle errors gracefully during build/prerender
+    if (error.message?.includes("cookies") || error.message?.includes("headers")) {
+      return { error: "You must be logged in" }
+    }
+    return { error: error.message || "Failed to get profile" }
   }
 }
 
 export async function getOrders() {
-  const supabase = await createClient()
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  if (!user) {
-    return { error: "You must be logged in" }
-  }
-
   try {
+    const supabase = await createClient()
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
+
+    if (!user) {
+      return { error: "You must be logged in" }
+    }
+
     const { data: orders, error } = await supabase
       .from("orders")
       .select(`
@@ -90,6 +94,10 @@ export async function getOrders() {
 
     return { success: true, orders: orders || [] }
   } catch (error: any) {
-    return { error: error.message }
+    // Handle errors gracefully during build/prerender
+    if (error.message?.includes("cookies") || error.message?.includes("headers")) {
+      return { error: "You must be logged in" }
+    }
+    return { error: error.message || "Failed to get orders" }
   }
 }
